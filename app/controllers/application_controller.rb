@@ -4,17 +4,32 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def show
+    @idea = NoteBook.find_by_id(params['id'])
     
   end
   
-  def new
+  def create
    n = NoteBook.new
-   n.save
    n.idea = params['idea']
+   n.save
    # redirect_to "/create-new-idea/#{n.id}"
+   redirect_to "/notebook/#{n.id}"
     
   end
-
+  
+  def edit
+    @idea = NoteBook.find_by_id(params['id'])
+    
+  end
+  
+  def update 
+   n = NoteBook.find_by_id(params['id'])
+   n.idea = params['idea']
+   n.save
+   redirect_to "/notebook/#{n.id}"
+    
+  end
+   
 end
 
 
