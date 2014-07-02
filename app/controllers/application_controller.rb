@@ -6,6 +6,14 @@ class ApplicationController < ActionController::Base
   def show
     
   end
+  
+  def new
+   n = NoteBook.new
+   n.save
+   n.idea = params['idea']
+   # redirect_to "/create-new-idea/#{n.id}"
+    
+  end
 
 end
 
